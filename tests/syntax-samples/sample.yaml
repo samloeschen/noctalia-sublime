@@ -1,0 +1,10 @@
+%YAML 1.2
+---
+defaults: &defaults
+  enabled: true
+  colors: [cyan, magenta]
+
+palette:
+  <<: *defaults
+  name: Noctalia
+  contrast: 4.5

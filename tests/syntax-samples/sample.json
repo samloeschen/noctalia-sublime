@@ -1,0 +1,7 @@
+{
+    "name": "Noctalia",
+    "enabled": true,
+    "colors": ["cyan", "magenta"],
+    "contrast": 4.5,
+    "metadata": null
+}

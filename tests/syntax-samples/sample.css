@@ -1,0 +1,11 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accent-color: rgb(61 219 217 / 82%);
+    }
+
+    main.palette#preview:hover::before {
+        color: var(--accent-color);
+        content: "active";
+        display: grid;
+    }
+}

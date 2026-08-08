@@ -1,0 +1,13 @@
+[catalog.sublime-text]
+name = "Sublime Text"
+category = "editor"
+
+[templates.sublime_text_color_scheme]
+input_path = "Noctalia.sublime-color-scheme"
+output_path_dynamic = "bash '{{ config_dir }}/output-path.sh' 'Noctalia.sublime-color-scheme'"
+index = 10
+
+[templates.sublime_text_ui_theme]
+input_path = "Noctalia.sublime-theme"
+output_path_dynamic = "bash '{{ config_dir }}/output-path.sh' 'Noctalia.sublime-theme'"
+index = 20

@@ -1,0 +1,38 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install validation tools
+        run: sudo apt-get update && sudo apt-get install -y jq ripgrep
+      - name: Validate shell scripts
+        run: bash -n output-path.sh tests/check-rendered-scheme.sh
+      - name: Validate manifest
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import tomllib
+
+          root = pathlib.Path.cwd()
+          with (root / "template.toml").open("rb") as manifest_file:
+              manifest = tomllib.load(manifest_file)
+
+          catalog = manifest.get("catalog", {}).get("sublime-text")
+          assert catalog == {"name": "Sublime Text", "category": "editor"}
+
+          templates = manifest.get("templates", {})
+          assert templates
+          for name, entry in templates.items():
+              source = root / entry["input_path"]
+              assert source.is_file(), f"{name}: missing {source}"
+              assert entry.get("output_path") or entry.get("output_path_dynamic"), f"{name}: missing output"
+          PY

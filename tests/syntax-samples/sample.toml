@@ -1,0 +1,9 @@
+[palette]
+name = "Noctalia"
+enabled = true
+colors = ["cyan", "magenta"]
+contrast = 4.5
+
+[[palette.overrides]]
+scope = "entity.name"
+style = { bold = true }
