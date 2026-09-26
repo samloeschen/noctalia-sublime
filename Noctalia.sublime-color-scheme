@@ -2,6 +2,7 @@
     "name": "Noctalia",
     "author": "Noctalia",
     "variables": {
+        "background": "{{ colors.terminal_background.default.hex }}",
         "surface_high": "{{ colors.surface_container_high.default.hex }}",
         "foreground": "{{ colors.terminal_foreground.default.hex }}",
         "outline_variant": "{{ colors.outline_variant.default.hex }}",
@@ -10,8 +11,6 @@
         "terminal_selection": "{{ colors.terminal_selection_bg.default.hex }}",
         "terminal_selection_foreground": "{{ colors.terminal_selection_fg.default.hex }}",
 <* if {{ mode | replace: "light", "" }} *>
-        "background": "{{ colors.terminal_background.default.hex }}",
-        "gutter_background": "{{ colors.terminal_background.default.hex | darken 2 }}",
         "foreground_muted": "{{ colors.on_surface_variant.default.hex }}",
         "outline": "{{ colors.outline.default.hex }}",
         "primary": "{{ colors.primary.default.hex }}",
@@ -36,8 +35,6 @@
         "punctuation_muted": "color(var(foreground_muted) alpha(0.72))",
         "comment": "var(outline)",
 <* else *>
-        "background": "{{ colors.terminal_background.default.hex | darken 2 }}",
-        "gutter_background": "{{ colors.terminal_background.default.hex }}",
         "foreground_muted": "{{ colors.terminal_bright_black.default.hex }}",
         "outline": "{{ colors.terminal_bright_black.default.hex }}",
         "primary": "{{ colors.primary.default.hex }}",
@@ -80,7 +77,7 @@
         "fold_marker": "var(primary)",
         "minimap_border": "var(outline_variant)",
         "accent": "var(primary)",
-        "gutter": "var(gutter_background)",
+        "gutter": "var(background)",
         "gutter_foreground": "var(foreground_muted)",
         "gutter_foreground_highlight": "var(primary)",
         "line_diff_added": "var(secondary)",
